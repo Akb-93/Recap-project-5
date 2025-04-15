@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const API_URL = "https://example-apis.vercel.app/api/art"; // Ersetze dies mit deiner API-URL!
+const API_URL = "https://example-apis.vercel.app/api/art";
 
 export async function getStaticPaths() {
   try {
@@ -35,7 +35,7 @@ export async function getStaticPaths() {
       params: { slug: artwork.slug.toString() },
     }));
 
-    console.log("getStaticPaths - generated paths:", paths);
+    console.log("getStaticPaths - generated paths:", paths); // Debugging
 
     return {
       paths,
@@ -84,7 +84,6 @@ const ArtworkDetails = ({ artwork }) => {
       <p>Artist: {artwork.artist}</p>
       <img src={artwork.imageSource} alt={artwork.name} />
       <p>{artwork.description}</p>
-      
     </div>
   );
 };

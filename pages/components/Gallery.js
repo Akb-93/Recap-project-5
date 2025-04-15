@@ -1,5 +1,5 @@
 import React from 'react';
-import ImageCard from './ImageCard'; 
+import ImageCard from './ImageCard';
 import styled from 'styled-components';
 
 const GalleryContainer = styled.div`
@@ -10,10 +10,13 @@ const GalleryContainer = styled.div`
 `;
 
 const Gallery = ({ artworks }) => {
+  // Filtere ungültige Artworks heraus
+  const validArtworks = artworks ? artworks.filter(artwork => artwork && artwork.slug && artwork.imageSource && artwork.name && artwork.artist) : [];
+
   return (
     <GalleryContainer>
-      {artworks && artworks.map((artwork) => (
-        <ImageCard key={artwork.id} artwork={artwork} />
+      {validArtworks.map((artwork) => (
+        <ImageCard key={artwork.slug} artwork={artwork} />
       ))}
     </GalleryContainer>
   );

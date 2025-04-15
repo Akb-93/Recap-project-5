@@ -13,8 +13,9 @@ const nextConfig = {
 
     return config;
   },
+  reactStrictMode: true,
   images: {
-    domains: ['example-apis.vercel.app'], 
+    domains: ['example-apis.vercel.app'],
   },
 };
 

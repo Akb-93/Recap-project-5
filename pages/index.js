@@ -1,9 +1,9 @@
 import React from 'react';
 import useSWR from 'swr';
-import Gallery from '../pages/components/Gallery'; 
+import Gallery from './components/Gallery';
 import styled from 'styled-components';
 
-const API_URL = "https://example-apis.vercel.app/api/art"; 
+const API_URL = "https://example-apis.vercel.app/api/art";
 const fetcher = (...args) => fetch(...args).then(res => res.json());
 
 const Header = styled.h1`
@@ -33,10 +33,13 @@ export default function HomePage() {
   if (error) return <ErrorContainer>Error: {error.message}</ErrorContainer>;
   if (!artworks) return <LoadingContainer>No artworks found</LoadingContainer>;
 
+  // Filtere ungültige Artworks heraus
+  const validArtworks = artworks.filter(artwork => artwork && artwork.slug && artwork.imageSource && artwork.name && artwork.artist);
+
   return (
     <div>
       <Header>ART GALLERY</Header>
-      <Gallery artworks={artworks} />
+      <Gallery artworks={validArtworks} />
     </div>
   );
 }

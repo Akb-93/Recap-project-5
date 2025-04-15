@@ -4,18 +4,33 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 const Card = styled.div`
-
   border: 1px solid #ccc;
-  
+  border-radius: 8px;
   overflow: hidden;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  
+  cursor: pointer;
 
-  
+  &:hover {
+    opacity: 0.8;
+  }
 `;
 
-const ImageCard = ({artwork }) => {
+const Title = styled.h3`
+  margin-bottom: 0.25rem;
+  font-size: 1.2rem;
+`;
+
+const Artist = styled.p`
+  font-size: 0.9rem;
+  color: #666;
+`;
+
+const ImageCard = ({ artwork }) => {
+  if (!artwork) {
     console.warn("ImageCard received undefined artwork!");
+    return null; // Oder ein Platzhalter/Ladezustand
+  }
+
   return (
     <Card>
       <Link href={`/artworks/${artwork.slug}`}>
@@ -25,13 +40,13 @@ const ImageCard = ({artwork }) => {
             alt={artwork.name}
             width={500}
             height={300}
-            
+            layout="responsive"
           />
-        
+       
       </Link>
-      <div> 
-        <h3>{artwork.name}</h3> 
-        <p>Artist: {artwork.artist}</p> 
+      <div>
+        <Title>{artwork.name}</Title>
+        <Artist>Artist: {artwork.artist}</Artist>
       </div>
     </Card>
   );
