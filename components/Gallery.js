@@ -10,7 +10,7 @@ const GalleryContainer = styled.div`
 `;
 
 const Gallery = ({ artworks }) => {
-  // Filtere ungültige Artworks heraus
+  
   const validArtworks = artworks ? artworks.filter(artwork => artwork && artwork.slug && artwork.imageSource && artwork.name && artwork.artist) : [];
 
   return (

@@ -40,7 +40,7 @@ const ImageCard = ({ artwork }) => {
             alt={artwork.name}
             width={500}
             height={300}
-            layout="responsive"
+           
           />
        
       </Link>
