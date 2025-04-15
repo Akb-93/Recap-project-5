@@ -1,15 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const API_URL = "https://example-apis.vercel.app/api/art"; // Replace with your actual API endpoint!
-const fetcher = (...args) => fetch(...args).then(res => res.json());
+const API_URL = "https://example-apis.vercel.app/api/art"; // Ersetze dies mit deiner API-URL!
 
-// getStaticPaths: Pre-renders specific pages based on data.
 export async function getStaticPaths() {
   try {
     const response = await fetch(API_URL);
     if (!response.ok) {
-      throw new Error(`HTTP error! Status: ${response.status}`);  // Bessere Fehlerbehandlung
+      throw new Error(`HTTP error! Status: ${response.status}`);
     }
     const artworks = await response.json();
 
@@ -34,10 +32,10 @@ export async function getStaticPaths() {
     });
 
     const paths = validArtworks.map(artwork => ({
-      params: { slug: artwork.slug.toString() },  // Sicherer Check ist eigentlich überflüssig, aber zur Sicherheit
+      params: { slug: artwork.slug.toString() },
     }));
 
-    console.log("getStaticPaths - generated paths:", paths); // Debugging!
+    console.log("getStaticPaths - generated paths:", paths);
 
     return {
       paths,
@@ -51,14 +49,12 @@ export async function getStaticPaths() {
       fallback: false,
     };
   }
-  // To-Do: Add error handling for API failures.
 }
 
-// getStaticProps: Fetches data for a specific page.
 export async function getStaticProps({ params }) {
   try {
-    const { slug } = params; // Get the 'slug' from the URL
-    const response = await fetch(`${API_URL}/${slug}`); // Fetch specific artwork
+    const { slug } = params;
+    const response = await fetch(`${API_URL}/${slug}`);
     if (!response.ok) {
       throw new Error(`HTTP error! Status: ${response.status}`);
     }
@@ -72,14 +68,12 @@ export async function getStaticProps({ params }) {
   } catch (error) {
     console.error(`Error fetching artwork ${params.slug}:`, error);
     return {
-      notFound: true, // Return notFound: true to show a 404 page
+      notFound: true,
     };
   }
-  // To-Do: Add more robust error handling.
 }
 
 const ArtworkDetails = ({ artwork }) => {
-  // To-Do: Add a better loading state (e.g., a skeleton loader).
   if (!artwork) {
     return <div>Loading...</div>;
   }
@@ -90,8 +84,7 @@ const ArtworkDetails = ({ artwork }) => {
       <p>Artist: {artwork.artist}</p>
       <img src={artwork.imageSource} alt={artwork.name} />
       <p>{artwork.description}</p>
-      {/* To-Do: Display other artwork details (year, genre, colors). */}
-      {/* To-Do: Add "Back to Gallery" button/link. */}
+      
     </div>
   );
 };
