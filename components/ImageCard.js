@@ -28,21 +28,19 @@ const Artist = styled.p`
 const ImageCard = ({ artwork }) => {
   if (!artwork) {
     console.warn("ImageCard received undefined artwork!");
-    return null; // Oder ein Platzhalter/Ladezustand
+    return null; 
   }
 
   return (
     <Card>
       <Link href={`/artworks/${artwork.slug}`}>
-        
-          <Image
-            src={artwork.imageSource}
-            alt={artwork.name}
-            width={500}
-            height={300}
-           
-          />
-       
+        <Image
+          src={artwork.imageSource}
+          alt={artwork.name}
+          width={500}
+          height={300}
+
+        />
       </Link>
       <div>
         <Title>{artwork.name}</Title>
