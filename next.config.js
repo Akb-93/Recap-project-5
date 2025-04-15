@@ -13,6 +13,10 @@ const nextConfig = {
 
     return config;
   },
+  reactStrictMode: true,
+  images: {
+    domains: ['example-apis.vercel.app'],
+  },
 };
 
 module.exports = nextConfig;
