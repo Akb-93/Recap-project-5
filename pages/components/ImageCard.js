@@ -14,7 +14,8 @@ const Card = styled.div`
   
 `;
 
-const ImageCard = ({ artwork }) => {
+const ImageCard = ({artwork }) => {
+    console.warn("ImageCard received undefined artwork!");
   return (
     <Card>
       <Link href={`/artworks/${artwork.slug}`}>
