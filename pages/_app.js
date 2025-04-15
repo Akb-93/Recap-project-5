@@ -1,10 +1,13 @@
-import GlobalStyle from "../styles"; 
+import React from 'react';
+import Navigation from '../components/Navigation';
 
-export default function App({ Component, pageProps }) {
+function MyApp({ Component, pageProps }) {
   return (
-    <>
-      <GlobalStyle />
+    <div>
+      <Navigation />
       <Component {...pageProps} />
-    </>
+    </div>
   );
 }
+
+export default MyApp;
