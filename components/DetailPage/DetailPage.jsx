@@ -11,7 +11,7 @@ export default function DetailPage({ element, onToggleFavorite}) {
           <Image
             width={element.dimensions.width}
             height={element.dimensions.height}
-            alt="image of a bleutiful artwork"
+            alt="image of a beautiful artwork"
             src={element.imageSource}
             />
         </div>
