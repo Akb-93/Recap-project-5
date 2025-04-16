@@ -9,3 +9,4 @@ export default function Gallery() {
 
   return <CardList elements={data} elementName={"gallery"} />;
 }
+
