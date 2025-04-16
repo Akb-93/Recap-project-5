@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 const NAV_ITEMS = [
   { name: "Spotlight", href: "/" },
   { name: "Gallery", href: "/gallery" },
+  { name: "Favourite", href: "/favourite" },
 ];
 
 export default function Footer() {

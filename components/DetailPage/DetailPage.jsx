@@ -1,8 +1,8 @@
 import Image from "next/image";
 import { useRouter } from "next/router";
+import FavoriteButton from "../FavouriteButton/FavouriteButton";
 
-
-export default function DetailPage({ element }) {
+export default function DetailPage({ element, onToggleFavorite}) {
   const router = useRouter();
   return (
     <div>
@@ -25,10 +25,11 @@ export default function DetailPage({ element }) {
             <button
               onClick={(e) => {
                 e.preventDefault();
-                router.push("/gallery");
+                router.push("/favourite");
               }}>
               Back
             </button>
+            <FavoriteButton element={element} onToggleFavorite={onToggleFavorite} />
            
           </div>
         </div>
